@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageDisplay = document.getElementById('message');
     const attemptsDisplay = document.getElementById('attempts');
     const totalTiles = 10;
-    const maxAttempts = 5; // Set the maximum number of attempts
+    const maxAttempts = 5; 
     const nemoPosition = Math.floor(Math.random() * totalTiles);
     let attempts = 0;
     let gameWon = false;
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tile.dataset.index = i;
         gameGrid.appendChild(tile);
 
-        // Add a click event listener to each tile
+       
         tile.addEventListener('click', () => {
             if (gameWon || attempts >= maxAttempts || tile.classList.contains('nemo-found') || tile.classList.contains('nemo-not-found')) {
-                return; // Do nothing if the game is over or tile is already revealed
+                return; 
             }
 
             attempts++;
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 tile.classList.add('nemo-not-found');
             }
 
-            // Check if max attempts are reached and Nemo is not found
             if (attempts >= maxAttempts && !gameWon) {
                 messageDisplay.textContent = `Game Over! Nemo was at position ${nemoPosition + 1}.`;
                 revealAllTiles();
@@ -45,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Function to reveal all other tiles
     function revealAllTiles() {
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach(tile => {
             if (!tile.classList.contains('nemo-found')) {
                 tile.classList.add('nemo-not-found');
             }
-            tile.style.pointerEvents = 'none'; // Disable all tiles after the game ends
+            tile.style.pointerEvents = 'none'; 
         });
     }
+
 });
